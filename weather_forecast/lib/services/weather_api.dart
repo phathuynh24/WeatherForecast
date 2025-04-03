@@ -1,18 +1,16 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:weather_forecast/models/weather_forecast.dart';
 import 'package:weather_forecast/models/weather_today.dart';
-import 'package:weather_forecast/utils/api_keys.dart';
+import 'package:weather_forecast/utils/constants.dart';
 
 class WeatherApi {
   static const String baseUrl = 'https://api.weatherapi.com/v1';
-  static String apiKey = '6908368d55094f2f87e45133250204'; // Lấy API key từ WeatherAPI
+  static String apiKey = dotenv.env[EnvKeys.weatherApiKey]!;
 
   // Lấy thời tiết hiện tại
   static Future<WeatherToday> fetchCurrentWeather(String city) async {
-    print ('Fetching current weather for $city...');
-    // apiKey
-    print('API Key: $apiKey');
     final response = await http.get(Uri.parse('$baseUrl/current.json?key=$apiKey&q=$city'));
 
     if (response.statusCode == 200) {
@@ -22,7 +20,6 @@ class WeatherApi {
     }
   }
 
-  // Lấy dự báo thời tiết
   static Future<List<WeatherForecast>> fetchForecastWeather(String city) async {
     final response = await http.get(Uri.parse('$baseUrl/forecast.json?key=$apiKey&q=$city&days=5'));
 

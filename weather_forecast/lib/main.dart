@@ -8,6 +8,7 @@ import 'package:weather_forecast/screens/home_screen.dart';
 import 'package:weather_forecast/screens/login_screen.dart';
 import 'package:weather_forecast/screens/signup_screen.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:weather_forecast/utils/constants.dart';
 
 void main() async {
   // Load environment variables
@@ -16,14 +17,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize Firebase with FirebaseOptions
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyBtL_vc2DsJSqDQ8w2x7c6uIXjletNPHcA",
-      authDomain: "weather-forecast-20c68.firebaseapp.com",
-      projectId: "weather-forecast-20c68",
-      storageBucket: "weather-forecast-20c68.firebasestorage.app",
-      messagingSenderId: "344306934590",
-      appId: "1:344306934590:web:45a04f2a1dea3ae20ec26f",
-      measurementId: "G-DJ310MVNB4",
+    options: FirebaseOptions(
+      apiKey: dotenv.env[EnvKeys.googleApiKey]!,
+      authDomain: dotenv.env[EnvKeys.authDomain]!,
+      projectId: dotenv.env[EnvKeys.projectId]!,
+      storageBucket: dotenv.env[EnvKeys.storageBucket]!,
+      messagingSenderId: dotenv.env[EnvKeys.messagingSenderId]!,
+      appId: dotenv.env[EnvKeys.appId]!,
+      measurementId: dotenv.env[EnvKeys.measurementId]!,
     ),
   );
 
@@ -36,15 +37,17 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider()),  // Đảm bảo AuthProvider được tạo ra tại đây
+        ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => WeatherProvider()),
       ],
-      child: MyApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

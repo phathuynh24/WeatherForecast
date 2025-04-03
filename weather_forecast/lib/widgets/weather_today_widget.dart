@@ -29,7 +29,7 @@ class WeatherTodayWidget extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text('Temperature: $temperature°C'),
-            Text('Wind Speed: $windSpeed km/h'),
+            Text('Wind: $windSpeed km/h'),
             Text('Humidity: $humidity%'),
             Text('Weather: $weatherDescription'),
           ],

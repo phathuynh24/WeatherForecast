@@ -4,7 +4,6 @@ import 'package:weather_forecast/providers/weather_provider.dart';
 import 'package:weather_forecast/utils/constants.dart';
 import 'package:weather_forecast/utils/theme.dart';
 import 'package:weather_forecast/widgets/forecast_widget.dart';
-import 'package:weather_forecast/widgets/header_widget.dart';
 import 'package:weather_forecast/widgets/weather_today_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,9 +23,11 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   // ô tìm kiếm và nút "Use Current Location"
                   Padding(

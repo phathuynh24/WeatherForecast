@@ -1,5 +1,15 @@
 class EnvKeys {
-  static const String weatheraApiKey = 'WEATHER_API_KEY';
+  // Weather API keys
+  static const String weatherApiKey = 'WEATHER_API_KEY';
+
+  // Firebase keys
+  static const String googleApiKey = 'GOOGLE_API_KEY';
+  static const String authDomain = 'AUTH_DOMAIN';
+  static const String projectId = 'PROJECT_ID';
+  static const String storageBucket = 'STORAGE_BUCKET';
+  static const String messagingSenderId = 'MESSAGING_SENDER_ID';
+  static const String appId = 'APP_ID';
+  static const String measurementId = 'MEASUREMENT_ID';
 }
 
 class ErrorMessages {
