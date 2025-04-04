@@ -5,6 +5,7 @@ class ApiKeys {
   static String get weatherApiKey {
     // Load the environment variables from the .env file
     final apiKey = dotenv.env[EnvKeys.weatherApiKey];
+    // final apiKey = "";
 
     // Check if the API key is null or empty
     if (apiKey == null || apiKey.isEmpty) {
