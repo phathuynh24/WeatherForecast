@@ -18,20 +18,23 @@ A cross-platform Flutter application that shows weather forecasts with subscript
 ```
 WEATHER_FORECAST/
 ├── assets/                    # Static assets
-├── build/                    # Auto-generated build files
-├── functions/                # Firebase Cloud Functions (Node.js + SendGrid)
+│   ├── .env.example           # Example environment config
+│   └── .env                   # 🔐 Actual environment file (user-created)
+├── build/                     # Auto-generated build files
+├── functions/                 # Firebase Cloud Functions (Node.js + SendGrid)
 │   ├── index.js
 │   ├── package.json
+│   ├── package-lock.json
 │   └── .eslintrc.js
 ├── lib/
-│   ├── models/               # Weather models
-│   ├── providers/            # State management (Provider)
-│   ├── screens/              # All UI screens
-│   ├── services/             # API and Firestore services
-│   ├── utils/                # Utility functions/constants
-│   └── widgets/              # Custom reusable widgets
-├── public/                  # Firebase hosting for web
-├── .env                     # 🔐 Environment file (copy from `.env.example`)
+│   ├── models/                # Weather data models
+│   ├── providers/             # State management logic
+│   ├── screens/               # UI screens (Home, Signup, Login, etc.)
+│   ├── services/              # APIs and Firestore-related logic
+│   ├── utils/                 # Utility helpers (constants, theme, etc.)
+│   └── widgets/               # Custom reusable Flutter widgets
+├── public/                    # Static web files for Firebase Hosting
+├── test/                      # Flutter test files
 ├── .gitignore
 └── README.md
 ```
@@ -45,15 +48,17 @@ WEATHER_FORECAST/
 Create your own `.env` file:
 
 ```bash
-cp .env.example .env
+cp assets/.env.example assets/.env
 ```
 
 Then open `.env` and fill in the following keys:
 
 ```env
-WEATHER_API_KEY=your_openweather_api_key
-SENDGRID_API_KEY=your_sendgrid_api_key
-SENDGRID_VERIFIED_SENDER=email@yourdomain.com
+WEATHER_API_KEY=your-weather-api-key-here
+GOOGLE_API_KEY=your-google-api-key-here
+AUTH_DOMAIN=your-auth-domain-here
+PROJECT_ID=your-project-id-here
+...
 ```
 
 ### 2. 📲 Flutter App Setup
